@@ -19,11 +19,26 @@ function myCompareFn(a,b){
   return diff;
 }
 ```
+- findFirst
+  - some lists have multiple of the same key
+  - this function finds the first item that fits the value
+- findLast
+  - some lists have multiple of the same key
+  - this function finds the last item that fits the value
+
 - insert
   - takes
 - upsert
 
-# Todo
+# Short Term
+- try early outs based on minIndex and maxIndex even when they are not their defaults or undefined
+- provide more information relating to errors
+  - examples
+    - what were the arguments for the compare result?
+    - provided function is not a function, what is it?
+- insert first and last
+
+# Long Term
 - Rewritten Typescript support
 - Async Support
   - some compares use things like files or async storage
@@ -45,4 +60,17 @@ function myCompareFn(a,b){
       - if the byte before it was an escape character, skip that object end
     - return value(fileRead(objectStart, objectEnd))
     - this method technically isn't the same as a binary search, it's more of an "approximated search"
+  - this needs its own getFirst, getLast and getAtIndex functions since it would probably be async or require loops/iteration until the program finds the "objectend" they are looking for
 - support both mutable and immutable arrays
+- create tests
+- wasm search and modifiers though I'm not sure if wasm can run a "compare" function nor has async/await support
+
+# Maybe
+- support for negative min and max
+  - this will result in array.length - min or array.length - max
+- With merge sort, try to sort from both ends
+  - currently I'm only checking the first items but I could be checking the last items as well
+  - could make the whole sort go twice as fast
+  - both front and back may overlap so I would have to make sure it doesn't
+- make the non abstract functions private
+- rename ThreadWorker to something like WorkOrganizer
