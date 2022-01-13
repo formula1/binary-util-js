@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/formula1/binary-util-js/issues"
   },
-  "homepage": "https://github.com/formula1/binary-util-js#readme"
+  "homepage": "https://github.com/formula1/binary-util-js#readme",
+  "dependencies": {
+    "events": "^3.3.0"
+  }
 }
