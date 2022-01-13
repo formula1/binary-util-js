@@ -66,9 +66,8 @@ export function isFound(index){
 }
 
 export function prepareIndexForUse(index){
-  if(index < 0){
-    return -1 * index;
-  } else {
-    return 1 + index;
-  }
+  if(index === Number.POSITIVE_INFINITY) return index;
+  if(index === Number.NEGATIVE_INFINITY) return index;
+  if(index < 0) return -1 * index;
+  return 1 + index;
 }
