@@ -1,0 +1,26 @@
+{
+  "ignorePatterns": ["garbage", "hidden"],
+  "env": { },
+  "plugins": [],
+  "extends": [
+    "eslint:recommended"
+  ],
+  "globals": {
+    "require": true,
+    "Set": true,
+    "setTimeout": true,
+    "clearTimeout": true,
+    "__dirname": true,
+    "window": true,
+    "global": true,
+    "self": true,
+    "module": true,
+    "console": true,
+    "Promise": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "impliedStrict": true
+  }
+}

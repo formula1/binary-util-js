@@ -1,0 +1,41 @@
+{
+  "excludeFiles": ["garbage/*", "hidden/*"],
+  "preset": "airbnb",
+  "validateQuoteMarks": "\"",
+  "disallowSpaceAfterKeywords": ["if", "function", "while", "for", "catch", "do"],
+  "requireSpaceAfterKeywords" : ["else", "return"],
+  "requireSpaceBeforeBlockStatements": false,
+
+  "requireSpaceBetweenArguments": true,
+  "disallowSpaceBetweenArguments": false,
+
+  "requireSpaceAfterComma": true,
+  "disallowSpaceAfterComma": false,
+
+  "requireTrailingComma": false,
+  "disallowTrailingComma": false,
+
+  "disallowSpaceAfterObjectKeys": true,
+  "requireSpaceAfterObjectKeys": false,
+
+  "requireSpaceBeforeBinaryOperators": false,
+  "requireSpaceAfterBinaryOperators": false,
+
+  "requirePaddingNewLinesAfterBlocks": false,
+  "disallowMultipleVarDecl": false,
+  "requireCamelCaseOrUpperCaseIdentifiers": false,
+  "requireSpacesInAnonymousFunctionExpression": false,
+  "disallowSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+
+  "disallowSpacesInFunctionDeclaration": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+
+  "disallowSpaceBeforeSemicolon": true,
+
+  "requireShorthandArrowFunctions": false
+}
