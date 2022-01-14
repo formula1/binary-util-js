@@ -36,7 +36,7 @@ export function getFirst(array){
 }
 
 export function getLast(array){
-  return array[array.length];
+  return array[array.length - 1];
 }
 
 export function minIndexOrDefault(minIndex, testedNext){
