@@ -60,3 +60,23 @@ export function testLastIsUnique(array, item, compare, maxIndex){
   }
   return true;
 }
+
+export function testFirstIsUnique(array, item, compare, minIndex){
+  if(minIndex === UNDEFINED) return false;
+  if(minIndex > 0) return false;
+  const currentCompare = easyMin(array, item, compare);
+  if(currentCompare === Number.NEGATIVE_INFINITY) return currentCompare;
+  if(currentCompare === false) return false;
+
+  // So we just found an item at the first index
+  // we have the opportunity to just check the next value
+  // if the next value is greater than the current item, we've found the obly item
+
+  if(compare(item, array[currentCompare - 1]) > 0){
+    return currentCompare;
+  }
+  if(array.length === 2){
+    return Number.POSITIVE_INFINITY;
+  }
+  return true;
+}
