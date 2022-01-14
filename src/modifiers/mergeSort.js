@@ -5,6 +5,12 @@ import { findLast } from "../search/findLast.js";
 import { prepareIndexForUse } from "../utility.js";
 
 export function mergeSort(array, compare){
+  if(!Array.is(array)){
+    throw new Error("merge sort is expecting an array as its first argument");
+  }
+  if(typeof compare !== "function"){
+    throw new Error("merge sort is expecting a function as its second argument");
+  }
   return divide(array);
 
   function divide(array){
