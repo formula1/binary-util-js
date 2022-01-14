@@ -5,7 +5,10 @@
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap"
+  },
+  "tap": {
+    "coverage-map": "tests.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,8 @@
   "homepage": "https://github.com/formula1/binary-util-js#readme",
   "dependencies": {
     "events": "^3.3.0"
+  },
+  "devDependencies": {
+    "tap": "^15.1.6"
   }
 }
