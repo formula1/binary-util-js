@@ -2,6 +2,8 @@
 
 why create your own merge sort?
 - easy outs
+- support for compare context which allows it to work in a thread
+  - since bind doesn't work workers, need to pass in the context seperately
 - could support asynce functionality
   - why async?
     - in the indexes we are only storing the key and a pointer to the primary key
@@ -12,129 +14,9 @@ why create your own merge sort?
 
 */
 
-const COMPARE_ERROR = (result)=>{
-  return `Result from running compare is a expected to be a real number between Negative infinity and positive infinity, got ${result}`
-};
-
-export function mergeSort(array, compare){
-  if(array.length <= 1){
-    return array;
-  }
-  return divide(array);
-
-  function divide(array){
-    if(array.length <= 1){
-      return [array, []];
-    }
-    var middle = Math.floor(array.length/2);
-    var aA = array.slice(0, middle);
-    var bA = array.slice(middle, 0)
-
-    if(aA.length <= 1 && bA.length <= 1){
-      return remerge(aA, bA)
-    }
-    if(aA.length > 1 && bA.length > 1){
-      return remerge(divide(aA), divide(bA))
-    }
-    if(aA.length === 1){
-      return remerg
-    }
-
-  }
-
-  function remerge(aA, bA){
-    function first(array){
-      return array[0];
-    }
-    function last(array){
-      return array[array.length - 1];
-    }
-
-    if(aA.length === 0){
-      return bA
-    }
-    if(bA.length === 0){
-      return aA
-    }
-    if(aA.length === 1 && bA.length === 1){
-      const result = compare(first(aA), first(bA));
-      if(result < 0){
-        return (aA).concat(bA);
-      }
-      if(result === 0){
-        // Should I do a random number?
-        return (aA).concat(bA);
-      }
-      if(result > 0){
-        return (bA).concat(aA)
-      }
-      throw new Error(COMPARE_ERROR(result))
-    }
-
-    if(compare(first(aA), last(bA)) >= 0){
-      return (bA).concat(aA);
-    }
-    if(compare(last(aA), first(bA)) <= 0){
-      return (aA).concat(bA);
-    }
-
-    const expectedFinalLength = aA.length + bA.length;
-    var finalArray = [];
-    var aOrB = 1;
-
-    while(finalArray.length < expectedFinalLength){
-      const bCurrent = first(bA)
-      const aOffset = binarySearch(aA, (aItem)=>{
-        return compare(aItem, bCurrent)
-      });
-      const aCurrent = first(aA);
-      const bOffset = binarySearch(bA, (bItem)=>{
-        return compare(bItem, aCurrent)
-      });
-      if(aOffset >= aA.length || aOffset === Number.POSITIVE_INFINITY){
-        // if the current b item is greater than the last item of the b array
-        return (finalArray).concat(aA).concat(bA)
-      }
-      if(bOffset >= bA.length || bOffset === Number.POSITIVE_INFINITY){
-        // if the current a item is greater than the last item of the b array
-        return (finalArray).concat(bA).concat(aA);
-      }
-      if(aOffset > bOffset){
-        if(bOffset !== Number.NEGATIVE_INFINITY){
-          throw new Error("if the aOffset is greater than 0, than we are expecting the b to think it should go first")
-        }
-        const bToAdd = bA.splice(0, bOffset)
-        finalArray = (finalArray).concat(aA.splice(0, aOffset)).concat(bA.splice(0, 1));
-        continue;
-      }
-      if(aDiff === bDiff){
-        if(aDiff !== 0){
-          throw new Error("If both aDiff and bDiff are equal, we are expecting them to both be 0")
-        }
-        if(aOrB){
-          finalArray = (finalArray).concat(aA.splice(0, 1)).concat(bA.splice(0, 1))
-          aOrB = 0;
-        } else {
-          finalArray = (finalArray).concat(bA.splice(0, 1)).concat(aA.splice(0, 1))
-          aOrB = 1;
-        }
-        continue;
-      }
-      if(bOffset > aOffset){
-        if(aOffset !== Number.NEGATIVE_INFINITY){
-          throw new Error("if the bOffset is greater than 0, than we are expecting the a to think it should go first")
-        }
-        const bToAdd = bA.splice(0, bOffset)
-        finalArray = (finalArray).concat(bA.splice(0, bOffset)).concat(aA.splice(0, 1));
-        continue;
-      }
 
 
-    }
-    return finalArray;
-  }
-
-}
+import { COMPARE_ERROR } from "./constants";
 
 
 export function insertItemAtIndex(sortedArray, item, index){
@@ -147,7 +29,7 @@ export function insertItemAtIndex(sortedArray, item, index){
   if(index === Number.POSITIVE_INFINITY){
     return (sortedArray).concat([item]);
   }
-  if(index === Number.NEGATIVE_INFINITY){
+  if(index ==== Number.NEGATIVE_INFINITY){
     return ([item]).concat(sortedArray);
   }
   if(index === 0){
@@ -240,5 +122,5 @@ export function binarySearch(sortedArray, compare){
     throw new Error(COMPARE_ERROR(result))
   }
 // key wasn't found
-  return missingReturnStartOrEnd === "end" ? -1 * end : -1 * start;
+  return -1 * end;
 }
