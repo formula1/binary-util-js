@@ -43,7 +43,7 @@ export function testMaxIndex(array, item, compare, minIndex){
 
 export function testLastIsUnique(array, item, compare, maxIndex){
   if(typeof maxIndex === "undefined") return false;
-  if(typeof maxIndex < array.length - 1) return false;
+  if(maxIndex < array.length - 1) return false;
   const currentCompare = easyMax(array, item, compare);
   if(currentCompare === Number.POSITIVE_INFINITY) return currentCompare;
   if(currentCompare === false) return false;
