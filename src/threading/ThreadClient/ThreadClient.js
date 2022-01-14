@@ -1,8 +1,9 @@
 
 import * as EventEmitter from "events";
-import { uniqueId } from "./constants";
 
 import {
+  uniqueId,
+
   RESULT_TYPE,
   IS_AVAILABLE_TYPE,
   EMIT_ERROR_TYPE,
