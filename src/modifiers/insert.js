@@ -6,7 +6,6 @@ import { findAny } from "../search/findAny.js";
 
 export function insertItemUnique(array, item, compare){
   var index = findAny(array, item, compare);
-  console.log(index);
   if(isFound(index)) throw new Error(cannotInsertAtExistingItem);
   if(Math.abs(index) !== Number.POSITIVE_INFINITY){
     index = -1 * index;
@@ -32,11 +31,9 @@ export function insertAllAny(sortedArray, unsortedArray, compare){
 
 export function insertItemAtIndex(array, item, index){
   if(index === Number.POSITIVE_INFINITY){
-    console.log("adding to the end")
     return (array).concat([item]);
   }
   if(index === Number.NEGATIVE_INFINITY){
-    console.log("adding to the start")
     return ([item]).concat(array);
   }
   return (
