@@ -55,5 +55,5 @@ export function findAny_UNSAFE(array, item, compare, minIndex, maxIndex){
     }
     throw new Error(compareError);
   }
-  return -1 * maxIndex;
+  return -1 * minIndex;
 }

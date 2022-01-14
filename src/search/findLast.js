@@ -72,5 +72,5 @@ export function findLast_UNSAFE(array, item, compare, minIndex, maxIndex, firstT
   if(currentMax > 0){
     return currentMax;
   }
-  return -1 * maxIndex;
+  return -1 * minIndex;
 }
