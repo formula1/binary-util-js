@@ -1,17 +1,17 @@
 import {
   minIndexOrDefault,
   maxIndexOrDefault
-} from "../utility";
+} from "../utility.js";
 
 import {
   compareError,
-} from "../errors";
+} from "../errors.js";
 
 import {
   tryEarlyOuts,
   testFirstIsUnique,
   testMaxIndex,
-} from "./early-outs";
+} from "./early-outs.js";
 
 export function findLast(array, item, compare, minIndex, maxIndex){
   const earlyOut = tryEarlyOuts(array, item, compare, minIndex, maxIndex);

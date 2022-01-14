@@ -1,5 +1,5 @@
 
-import { findAny } from "../search/findAny";
+import { findAny } from "../search/findAny.js";
 
 export function digestInitialArgs(args){
   const { compare } = args;

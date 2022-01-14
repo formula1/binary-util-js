@@ -1,8 +1,8 @@
 
-import { compareError } from "../errors";
-import { findLast } from "../search/findLast";
+import { compareError } from "../errors.js";
+import { findLast } from "../search/findLast.js";
 
-import { prepareIndexForUse } from "../utility";
+import { prepareIndexForUse } from "../utility.js";
 
 export function mergeSort(array, compare){
   return divide(array);

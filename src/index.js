@@ -1,10 +1,10 @@
 
-export * from "./modifiers/insert";
-export { removeAny, removeAll } from "./modifiers/remove";
-export * from "./modifiers/update";
-export * from "./modifiers/mergeSort";
+export * from "./modifiers/insert.js";
+export { removeAny, removeAll } from "./modifiers/remove.js";
+export * from "./modifiers/update.js";
+export * from "./modifiers/mergeSort.js";
 
-export { findAny } from "./search/findAny";
-export { findFirst } from "./search/findFirst";
-export { findLast } from "./search/findLast";
-export { findRange } from "./search/findRange";
+export { findAny } from "./search/findAny.js";
+export { findFirst } from "./search/findFirst.js";
+export { findLast } from "./search/findLast.js";
+export { findRange } from "./search/findRange.js";

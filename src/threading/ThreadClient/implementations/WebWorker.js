@@ -1,8 +1,8 @@
 /* eslint-env browser */
 /* global WebWorker */
 
-import { ThreadClientBase } from "../ThreadClient";
-import { PING_PROCESS_TYPE } from "../../constants";
+import { ThreadClientBase } from "../ThreadClient.js";
+import { PING_PROCESS_TYPE } from "../../constants.js";
 
 const DEFAULT_AVAILABLE_CPU_THREADS = 1;
 

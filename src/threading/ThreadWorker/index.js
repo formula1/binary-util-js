@@ -1,4 +1,4 @@
 
-export * from "./implementations/WebWorker";
+export * from "./implementations/WebWorker.js";
 
-export { ThreadWorkerNoModules as ThreadWorker } from "./ThreadWorkerNoModules";
+export { ThreadWorkerNoModules as ThreadWorker } from "./ThreadWorkerNoModules.js";

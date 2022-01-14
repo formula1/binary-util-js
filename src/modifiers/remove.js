@@ -1,8 +1,8 @@
 
-import { findAny } from "../search/findAny";
-import { findRange } from "../search/findRange";
+import { findAny } from "../search/findAny.js";
+import { findRange } from "../search/findRange.js";
 
-import { isFound } from "../utility";
+import { isFound } from "../utility.js";
 
 export function removeAny(array, item, compare){
   var index = findAny(array, item, compare);

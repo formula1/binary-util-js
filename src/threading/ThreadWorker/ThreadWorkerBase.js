@@ -12,7 +12,7 @@ import {
   ONEOFF_PROCESS_TYPE,
   KILL_PROCESS_TYPE,
   PING_PROCESS_TYPE,
-} from "../constants";
+} from "../constants.js";
 
 import {
   onlyStringKeys,
@@ -23,9 +23,9 @@ import {
   availFnNeedsCleanup,
 
   fnNeedsToBeImplemented,
-} from "../errors";
+} from "../errors.js";
 
-import { ModuleHandler } from "./ModuleHandler";
+import { ModuleHandler } from "./ModuleHandler.js";
 
 export class ThreadWorkerBase {
 

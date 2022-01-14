@@ -1,4 +1,4 @@
 
-export * from "./implementations/WebWorker";
+export * from "./implementations/WebWorker.js";
 
-export * from "./ThreadClient";
+export * from "./ThreadClient.js";

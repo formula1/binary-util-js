@@ -1,5 +1,5 @@
 
-import { ThreadWorkerNoModules } from "../ThreadWorkerNoModules";
+import { ThreadWorkerNoModules } from "../ThreadWorkerNoModules.js";
 
 export class WebWorker extends ThreadWorkerNoModules {
 

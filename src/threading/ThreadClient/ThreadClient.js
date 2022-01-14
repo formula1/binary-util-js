@@ -15,11 +15,11 @@ import {
   ONEOFF_PROCESS_TYPE,
   KILL_PROCESS_TYPE,
 
-} from "./constants";
+} from "./constants.js";
 
 import {
   fnNeedsToBeImplemented,
-} from "../errors";
+} from "../errors.js";
 
 const DEFAULT_MAX_QUEUE_TIMEOUT = 5 * 1000;
 

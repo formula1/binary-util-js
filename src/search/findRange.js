@@ -2,26 +2,26 @@
 import {
   negAndNot,
   negShouldBeEqual,
-} from "../errors";
+} from "../errors.js";
 
 import {
   findFirst_UNSAFE,
-} from "./findFirst";
+} from "./findFirst.js";
 
 import {
   findLast_UNSAFE,
-} from "./findLast";
+} from "./findLast.js";
 
 import {
   minIndexOrDefault,
   maxIndexOrDefault
-} from "../utility";
+} from "../utility.js";
 
 import {
   tryEarlyOuts,
   testFirstIsUnique,
   testLastIsUnique,
-} from "./early-outs";
+} from "./early-outs.js";
 
 export function findRange(array, item, compare, minIndex, maxIndex){
   const earlyOut = tryEarlyOuts(array, item, compare, minIndex, maxIndex);

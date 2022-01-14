@@ -3,13 +3,13 @@ import {
   easySingle,
   easyMin,
   easyMax,
-} from "../utility";
+} from "../utility.js";
 
 import {
   emptyArrayMessage,
   testMinAndMax,
   compareError,
-} from "../errors";
+} from "../errors.js";
 
 export function tryEarlyOuts(array, item, compare, minIndex, maxIndex){
   if(array.length === 0) throw new Error(emptyArrayMessage);

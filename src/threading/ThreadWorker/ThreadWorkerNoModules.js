@@ -1,11 +1,11 @@
 
-import { uniqueId } from "../utility";
+import { uniqueId } from "../utility.js";
 
 import {
   baseFnTypeMissing,
-} from "../errors";
+} from "../errors.js";
 
-import { ThreadWorkerBase } from "./ThreadWorkerBase";
+import { ThreadWorkerBase } from "./ThreadWorkerBase.js";
 
 export class ThreadWorkerNoModules extends ThreadWorkerBase {
 

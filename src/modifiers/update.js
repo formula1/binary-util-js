@@ -1,12 +1,12 @@
 
-import { findAny } from "../search/findAny";
-import { findRange } from "../search/findRange";
+import { findAny } from "../search/findAny.js";
+import { findRange } from "../search/findRange.js";
 
-import { insertAny, insertAllAny } from "./insert";
+import { insertAny, insertAllAny } from "./insert.js";
 
-import { isFound } from "../utility";
+import { isFound } from "../utility.js";
 
-import { removeIndex, removeRange } from "./remove";
+import { removeIndex, removeRange } from "./remove.js";
 
 export function updateAny(array, item, compare, update){
   var index = findAny(array, item, compare);
