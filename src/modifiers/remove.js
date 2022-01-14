@@ -2,16 +2,12 @@
 import { findAny } from "../search/findAny";
 import { findRange } from "../search/findRange";
 
-import { insertAny, insertAllAny } from "./insert";
-
-import { cannotUpdateNonExistingItem } from "../errors";
-
 import { isFound } from "../utility";
 
 export function removeAny(array, item, compare){
   var index = findAny(array, item, compare);
   if(!isFound(index)) return false;
-  return removeIndex(array, index)
+  return removeIndex(array, index);
 }
 
 export function removeAll(array, item, compare){

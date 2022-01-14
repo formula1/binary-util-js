@@ -4,16 +4,14 @@ import { findRange } from "../search/findRange";
 
 import { insertAny, insertAllAny } from "./insert";
 
-import { cannotUpdateNonExistingItem } from "../errors";
-
 import { isFound } from "../utility";
 
-import { removeIndex, removeRange } from "./remove"
+import { removeIndex, removeRange } from "./remove";
 
 export function updateAny(array, item, compare, update){
   var index = findAny(array, item, compare);
   if(!isFound(index)) return false;
-  const newItem = update(array[index])
+  const newItem = update(array[index]);
   array = removeIndex(array, index);
   return insertAny(
     array,
