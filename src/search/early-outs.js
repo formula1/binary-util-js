@@ -25,7 +25,7 @@ export function tryEarlyOuts(array, item, compare, minIndex, maxIndex){
   return false;
 }
 
-export function testMaxIndex(array, item, compare, minIndex){
+export function testMinIndex(array, item, compare, maxIndex){
   if(typeof minIndex === "undefined" || minIndex === 0){
     const currentCompare = easyMin(array, item, compare);
     if(currentCompare !== false) return currentCompare;
@@ -33,7 +33,7 @@ export function testMaxIndex(array, item, compare, minIndex){
   return false;
 }
 
-export function testMinIndex(array, item, compare, maxIndex){
+export function testMaxIndex(array, item, compare, minIndex){
   if(typeof maxIndex === "undefined" || maxIndex >= array.length-1){
     const currentCompare = easyMax(array, item, compare);
     if(currentCompare !== false) return currentCompare;
