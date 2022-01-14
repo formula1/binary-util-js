@@ -8,7 +8,7 @@ import { cannotUpdateNonExistingItem } from "../errors";
 
 import { isFound } from "../utility";
 
-export function removeAny(arra, item, compare){
+export function removeAny(array, item, compare){
   var index = findAny(array, item, compare);
   if(!isFound(index)) return false;
   return removeIndex(array, index)
