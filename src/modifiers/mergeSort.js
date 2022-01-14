@@ -11,6 +11,9 @@ export function mergeSort(array, compare){
   if(typeof compare !== "function"){
     throw new Error("merge sort is expecting a function as its second argument");
   }
+  if(array.length === 0){
+    return [];
+  }
   return divide(array);
 
   function divide(array){
@@ -27,13 +30,17 @@ export function mergeSort(array, compare){
     if(aA.length > 1 && bA.length > 1){
       return mergeSortedArrays(divide(aA), divide(bA), compare);
     }
-    if(aA.length === 1){
+    if(aA.length <= 1){
       return mergeSortedArrays(aA, divide(bA), compare);
     }
-    if(bA.length === 1){
+    if(bA.length <= 1){
       return mergeSortedArrays(divide(aA), bA, compare);
     }
-
+    throw new Error(
+      "Something went wrong with the array lengths: "
+      + "\naArray.length " + aA.length
+      + "\nbArray.length " + bA.length
+    );
   }
 }
 
