@@ -2,7 +2,7 @@
 import { cannotInsertAtExistingItem } from "../errors";
 
 import { isFound, prepareIndexForUse } from "../utility";
-import { findAny } from "../search";
+import { findAny } from "../search/findAny";
 
 export function insertItemUnique(array, item, compare){
   var index = findAny(array, item, compare);
