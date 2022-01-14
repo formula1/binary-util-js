@@ -1,4 +1,4 @@
-
+import { UNDEFINED } from "../constants.js";
 import {
   easySingle,
   easyMin,
@@ -15,7 +15,7 @@ export function tryEarlyOuts(array, item, compare, minIndex, maxIndex){
   if(array.length === 0) throw new Error(emptyArrayMessage);
   testMinAndMax(array, minIndex, maxIndex);
   if(array.length === 1) return easySingle(array, item, compare);
-  if(minIndex === maxIndex && typeof minIndex !== "undefined") {
+  if(minIndex === maxIndex && minIndex !== UNDEFINED) {
     var c = compare(item, array[minIndex]);
     if(c > 1) return -1 * (minIndex + 1);
     if(c === 0) return minIndex;
@@ -26,7 +26,7 @@ export function tryEarlyOuts(array, item, compare, minIndex, maxIndex){
 }
 
 export function testMinIndex(array, item, compare, maxIndex){
-  if(typeof minIndex === "undefined" || minIndex === 0){
+  if(maxIndex === UNDEFINED || maxIndex >= array.length-1){
     const currentCompare = easyMin(array, item, compare);
     if(currentCompare !== false) return currentCompare;
   }
@@ -34,7 +34,7 @@ export function testMinIndex(array, item, compare, maxIndex){
 }
 
 export function testMaxIndex(array, item, compare, minIndex){
-  if(typeof maxIndex === "undefined" || maxIndex >= array.length-1){
+  if(minIndex === UNDEFINED || minIndex === 0){
     const currentCompare = easyMax(array, item, compare);
     if(currentCompare !== false) return currentCompare;
   }
@@ -42,7 +42,7 @@ export function testMaxIndex(array, item, compare, minIndex){
 }
 
 export function testLastIsUnique(array, item, compare, maxIndex){
-  if(typeof maxIndex === "undefined") return false;
+  if(maxIndex === UNDEFINED) return false;
   if(maxIndex < array.length - 1) return false;
   const currentCompare = easyMax(array, item, compare);
   if(currentCompare === Number.POSITIVE_INFINITY) return currentCompare;

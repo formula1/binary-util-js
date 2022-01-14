@@ -1,3 +1,4 @@
+import { UNDEFINED } from "./constants.js";
 
 var counter = 0;
 export function uniqueId(base){
@@ -39,7 +40,7 @@ export function getLast(array){
 }
 
 export function minIndexOrDefault(minIndex, testedNext){
-  if(typeof minIndex === "undefined"){
+  if(minIndex === UNDEFINED){
     return 1 + (testedNext ? 1 : 0);
   }
   if(minIndex === 0){
@@ -49,7 +50,7 @@ export function minIndexOrDefault(minIndex, testedNext){
 }
 
 export function maxIndexOrDefault(maxIndex, array, testedPrev){
-  if(typeof maxIndex === "undefined"){
+  if(maxIndex === UNDEFINED){
     return array.length - 2 + (testedPrev ? -1 : 0);
   }
   if(maxIndex === array.length - 1){
