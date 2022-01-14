@@ -53,7 +53,7 @@ export function mergeSortedStreams(streams, sortOrder, compare, write_UNSAFE, en
     }
     var nextStreamAndItem = await streams.reduce(async (currentPromise, otherStream)=>{
       if(otherStream === stream) return currentPromise;
-      const active = await currentPromise();
+      const active = await currentPromise;
       const otherItem = getActiveItem(otherStream);
       if(await isAOverB(otherItem, active.item)){
         return {
@@ -78,7 +78,7 @@ export function mergeSortedStreams(streams, sortOrder, compare, write_UNSAFE, en
   }
   async function waitForAll(stream){
     var nextStreamOrFalse = streams.reduce(async (streamOrFalseP, otherStream)=>{
-      const streamOrFalse = await streamOrFalseP();
+      const streamOrFalse = await streamOrFalseP;
       if(streamOrFalse === false) return false;
       if(endedStreams.has(otherStream)) return streamOrFalse;
       if(this.queue[otherStream.id].length === 0){
@@ -107,7 +107,7 @@ export function mergeSortedStreams(streams, sortOrder, compare, write_UNSAFE, en
       isAQueueEmpty = this.queue[currentStream.id].length === 0;
       const active = await this.streams.reduce(async (currentPromise, otherStream)=>{
         if(currentStream === otherStream) return currentPromise;
-        const active = await currentPromise();
+        const active = await currentPromise;
         if(!await isAOverB(
           queue[active.stream.id][0].
           queue[otherStream.id][0]
