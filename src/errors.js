@@ -1,7 +1,7 @@
 
 export const cannotInsertAtExistingItem = "Cannot insert at an index that already exists";
 
-export const emptyArray = "The array that was passed is empty";
+export const emptyArrayMessage = "The array that was passed is empty";
 
 export const negAndNot = `one value was found to be missing, but the other was found`;
 
