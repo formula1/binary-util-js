@@ -16,7 +16,8 @@
     "self": true,
     "module": true,
     "console": true,
-    "Promise": true
+    "Promise": true,
+    "Symbol": true
   },
   "parserOptions": {
     "ecmaVersion": "latest",
