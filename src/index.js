@@ -2,7 +2,7 @@
 export * from "./modifiers/insert.js";
 export { removeAny, removeAll } from "./modifiers/remove.js";
 export * from "./modifiers/update.js";
-export * from "./modifiers/mergeSort.js";
+export { mergeSortRecursive as mergeSort } from "./modifiers/mergeSort/mergeSortRecursive.js";
 
 export { findAny } from "./search/findAny.js";
 export { findFirst } from "./search/findFirst.js";
