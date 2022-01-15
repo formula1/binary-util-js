@@ -245,6 +245,7 @@ export class LinkedList {
       next: current,
       item: item
     };
+    current.prev.next = node;
     current.prev = node;
     return this;
   }
