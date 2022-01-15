@@ -177,12 +177,12 @@ export class LinkedList {
       nextNode = {
         item: array[i],
         prev: prevNode,
-        next: UNDEFINED,
       };
       prevNode.next = nextNode;
       prevNode = nextNode;
     }
     this.endNode = prevNode;
+    prevNode.next = UNDEFINED;
     this._length = len;
     return this;
   }
