@@ -63,7 +63,7 @@ export function findLast_UNSAFE(array, item, compare, minIndex, maxIndex, firstT
       minIndex = currentIndex - 2;
       continue;
     }
-    if(currentCompare > 0) {
+    if(currentCompare < 0) {
       maxIndex = currentIndex - 1;
       continue;
     }
