@@ -1,3 +1,4 @@
+import { MAX_SAFE_NUM } from "../constants.js";
 
 import { cannotInsertAtExistingItem } from "../errors.js";
 
@@ -19,6 +20,9 @@ export function insertAllUnique(sortedArray, unsortedArray, compare){
 }
 
 export function insertItemAny(array, item, compare){
+  if(array.length > MAX_SAFE_NUM){
+    throw new Error(lengthGtMaxSafe);
+  }
   var index = findAny(array, item, compare);
   index = prepareIndexForUse(index);
   return insertItemAtIndex(array, item, index);
