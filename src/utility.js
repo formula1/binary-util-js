@@ -103,6 +103,7 @@ export class LinkedList {
       this.endNode = node;
     }
     this._length++;
+    return this;
   }
   pop(){
     const node = this.endNode;
@@ -135,6 +136,7 @@ export class LinkedList {
       this.startNode = node;
     }
     this._length++;
+    return this;
   }
   shift(){
     var node = this.startNode;
@@ -177,6 +179,7 @@ export class LinkedList {
     }
     this.endNode = prevNode;
     this._length = len;
+    return this;
   }
   toArray(){
     return Array.from(this);
@@ -185,6 +188,7 @@ export class LinkedList {
     this.startNode = UNDEFINED;
     this.endNode = UNDEFINED;
     this._length = 0;
+    return this;
   }
   [Symbol.iterator](){
     var currentNode = this.startNode;
