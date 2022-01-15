@@ -96,14 +96,10 @@ export function mergeSortedArraysNoSearch(
     return (aA).concat(bA);
   }
 
-  // var totalShiftTime = 0;
-  // var shiftStart = Date.now();
   var finalArray = buildFinalArray();
 
   var aCurrent = aA.shift();
   var bCurrent = bA.shift();
-
-  // totalShiftTime += Date.now() - shiftStart;
 
   var c;
 
@@ -111,12 +107,7 @@ export function mergeSortedArraysNoSearch(
     c = compare(aCurrent, bCurrent);
     if(c < 0){
       finalArray.push(aCurrent);
-
-      // shiftStart = Date.now();
-
       aCurrent = aA.shift();
-
-      // totalShiftTime += Date.now() - shiftStart;
       continue;
     }
     if(c === 0){
@@ -124,23 +115,14 @@ export function mergeSortedArraysNoSearch(
       finalArray.push(aCurrent);
       finalArray.push(bCurrent);
 
-      // shiftStart = Date.now();
-
       aCurrent = aA.shift();
       bCurrent = bA.shift();
-
-      // totalShiftTime += Date.now() - shiftStart;
 
       continue;
     }
     if(c > 0){
       finalArray.push(bCurrent);
-
-      // shiftStart = Date.now();
-
       bCurrent = bA.shift();
-
-      // totalShiftTime += Date.now() - shiftStart;
       continue;
     }
     throw new Error(compareError);
