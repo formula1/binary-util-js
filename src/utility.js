@@ -156,6 +156,10 @@ export class LinkedList {
     return node.item;
   }
   fromArray(array){
+    if(!Array.isArray(array)){
+      console.error("from array needs an array, got:", array);
+      throw new Error("when setting from an array need an array");
+    }
     if(this._length > 0){
       throw new Error("Cannot update a non empty Linked List");
     }
