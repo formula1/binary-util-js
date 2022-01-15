@@ -165,6 +165,7 @@ export class LinkedList {
     }
     const len = array.length;
     if(len === 0) return;
+    if(len === 1) return this.push(array[0]);
     this.startNode = {
       item: array[0],
       prev: UNDEFINED,
