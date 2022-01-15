@@ -78,10 +78,10 @@ export class LinkedList {
     return this._length;
   }
   get first(){
-    return this.start;
+    return this.startNode.item;
   }
   get last(){
-    return this.end;
+    return this.endNode.item;
   }
   constructor(maybeArray){
     if(maybeArray){
@@ -93,30 +93,30 @@ export class LinkedList {
   push(newItem){
     var node = {
       next: UNDEFINED,
-      prev: this.end,
+      prev: this.endNode,
       item: newItem,
     };
     if(this._length === 0){
-      this.end = node;
-      this.start = node;
+      this.endNode = node;
+      this.startNode = node;
     } else {
-      this.end.next = node;
-      this.end = node;
+      this.endNode.next = node;
+      this.endNode = node;
     }
     this._length++;
   }
   pop(){
-    const node = this.end;
+    const node = this.endNode;
     switch(this._length){
       case 0: throw new Error("Cannot pop an empty list");
       case 1: {
-        this.start = UNDEFINED;
-        this.end = UNDEFINED;
+        this.startNode = UNDEFINED;
+        this.endNode = UNDEFINED;
         break;
       }
       default: {
-        this.end = node.prev;
-        this.end.next = UNDEFINED;
+        this.endNode = node.prev;
+        this.endNode.next = UNDEFINED;
       }
     }
     this._length--;
@@ -124,31 +124,31 @@ export class LinkedList {
   }
   unshift(newItem){
     const node = {
-      next: this.start,
+      next: this.startNode,
       prev: UNDEFINED,
       item: newItem,
     };
     if(this._length === 0){
-      this.start = node;
-      this.end = node;
+      this.startNode = node;
+      this.endNode = node;
     } else {
-      this.start.prev = node;
-      this.start = node;
+      this.startNode.prev = node;
+      this.startNode = node;
     }
     this._length++;
   }
   shift(){
-    var node = this.start;
+    var node = this.startNode;
     switch(this._length){
       case 0: throw new Error("Cannot pop an empty list");
       case 1: {
-        this.start = UNDEFINED;
-        this.end = UNDEFINED;
+        this.startNode = UNDEFINED;
+        this.endNode = UNDEFINED;
         break;
       }
       default: {
-        this.start = node.next;
-        this.start.prev = UNDEFINED;
+        this.startNode = node.next;
+        this.startNode.prev = UNDEFINED;
       }
     }
     this._length--;
@@ -163,7 +163,7 @@ export class LinkedList {
     this.start = {
       item: array[0]
     };
-    var prevNode = this.start;
+    var prevNode = this.startNode;
     var nextNode;
     for(var i = 1; i < len; i++){
       nextNode = {
@@ -173,49 +173,49 @@ export class LinkedList {
       prevNode.next = nextNode;
       prevNode = nextNode;
     }
-    this.end = prevNode;
+    this.endNode = prevNode;
     this._length = len;
   }
   toArray(){
     return Array.from(this);
   }
   clear(){
-    this.start = UNDEFINED;
-    this.end = UNDEFINED;
+    this.startNode = UNDEFINED;
+    this.endNode = UNDEFINED;
     this._length = 0;
   }
   [Symbol.iterator](){
     var currentNode = this.startNode;
     return {
       next(){
-        if(currentItem === UNDEFINED){
+        if(currentNode === UNDEFINED){
           return { done: true };
         }
-        const prevItem = currentItem;
-        currentItem = prevItem.next;
+        const prevNode = currentNode;
+        currentNode = prevNode.next;
         return {
           done: false,
-          value: prevItem.item,
+          value: prevNode.item,
         };
       },
     };
   }
-  concat(otherItem){
-    if(Array.isArray(otherItem)){
-      otherItem = new LinkedList(otherItem);
+  concat(otherList){
+    if(Array.isArray(otherList)){
+      otherList = new LinkedList(otherList);
     }
-    if(!(otherItem instanceof LinkedList)){
+    if(!(otherList instanceof LinkedList)){
       throw new Error("When concacting, need an array or a linked list");
     }
 
-    if(otherItem.length === 0){
+    if(otherList.length === 0){
       return this;
     }
     const prevLast = this.endNode;
-    prevLast.next = otherItem.startNode;
-    otherItem.startNode.prev = prevLast;
-    this.endNode = otherItem.endNode;
-    this._length += otherItem.length;
+    prevLast.next = otherList.startNode;
+    otherList.startNode.prev = prevLast;
+    this.endNode = otherList.endNode;
+    this._length += otherList.length;
     return this;
   }
   insertAtIndex(item, index){
@@ -283,7 +283,7 @@ export function linkedListFactory(){
     },
     unshift(newItem){
       const node = {
-        next: this.start,
+        next: this.startNode,
         prev: UNDEFINED,
         item: newItem,
       };
@@ -352,17 +352,17 @@ export function linkedListFactory(){
       length = 0;
     },
     iterator(){
-      var currentItem = this.start;
+      var currentNode = this.startNode;
       return {
         next(){
-          if(currentItem === UNDEFINED){
+          if(currentNode === UNDEFINED){
             return { done: true };
           }
-          const prevItem = currentItem;
-          currentItem = prevItem.next;
+          const prevNode = currentNode;
+          currentNode = prevNode.next;
           return {
             done: false,
-            value: prevItem.item,
+            value: prevNode.item,
           };
         },
       };
