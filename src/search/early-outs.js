@@ -56,8 +56,9 @@ export function testMaxIndex(array, item, compare, minIndex){
 }
 
 export function testLastIsUnique(array, item, compare, maxIndex){
-  if(maxIndex === UNDEFINED) return false;
-  if(maxIndex < array.length - 1) return false;
+  if(maxIndex !== UNDEFINED){
+    if(maxIndex < array.length - 1) return false;
+  }
   const currentCompare = easyMax(array, item, compare);
   if(currentCompare === Number.POSITIVE_INFINITY) return currentCompare;
   if(currentCompare === false) return false;
@@ -76,8 +77,9 @@ export function testLastIsUnique(array, item, compare, maxIndex){
 }
 
 export function testFirstIsUnique(array, item, compare, minIndex){
-  if(minIndex === UNDEFINED) return false;
-  if(minIndex > 0) return false;
+  if(minIndex !== UNDEFINED){
+    if(minIndex > 0) return false;
+  }
   const currentCompare = easyMin(array, item, compare);
   if(currentCompare === Number.NEGATIVE_INFINITY) return currentCompare;
   if(currentCompare === false) return false;
