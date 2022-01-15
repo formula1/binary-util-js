@@ -49,3 +49,5 @@ export const availFnNeedsCleanup = "Each function to add needs to have a cleanup
 export const alreadyHaveBaseFn = "Already have a base function";
 
 export const fnNeedsToBeImplemented = "function needs to be implemented";
+
+export const lengthGtMaxSafe = "The array length is already at Maximum";

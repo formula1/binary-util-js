@@ -1,11 +1,17 @@
 import { MAX_SAFE_NUM } from "../constants.js";
 
-import { cannotInsertAtExistingItem } from "../errors.js";
+import {
+  cannotInsertAtExistingItem,
+  lengthGtMaxSafe,
+} from "../errors.js";
 
 import { isFound, prepareIndexForUse } from "../utility.js";
 import { findAny } from "../search/findAny.js";
 
 export function insertItemUnique(array, item, compare){
+  if(array.length > MAX_SAFE_NUM){
+    throw new Error(lengthGtMaxSafe);
+  }
   var index = findAny(array, item, compare);
   if(isFound(index)) throw new Error(cannotInsertAtExistingItem);
   if(Math.abs(index) !== Number.POSITIVE_INFINITY){
