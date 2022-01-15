@@ -1,5 +1,5 @@
 
-import { isArraySorted } from "../utility.js";
+import { isArraySorted } from "../utility/utility.js";
 import { insertItemUnique } from "../../src/modifiers/insert.js";
 
 var sortedArray = "abcdefghijklmnopqrstuvwxyz".split("");

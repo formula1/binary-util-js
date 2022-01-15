@@ -5,11 +5,10 @@
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
-    "test": "tap"
+    "test": "tap tests/**/*.test.js --reporter classic",
+    "coverage": "nyc npm run test"
   },
-  "tap": {
-    "coverage-map": "tests.js"
-  },
+  "tap": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/formula1/binary-util-js.git"
@@ -24,6 +23,7 @@
     "events": "^3.3.0"
   },
   "devDependencies": {
+    "nyc": "^15.1.0",
     "tap": "^15.1.6"
   }
 }
