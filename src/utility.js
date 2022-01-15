@@ -184,8 +184,8 @@ export class LinkedList {
     this.end = UNDEFINED;
     this._length = 0;
   }
-  iterator(){
-    var currentItem = this.start;
+  [Symbol.iterator](){
+    var currentNode = this.startNode;
     return {
       next(){
         if(currentItem === UNDEFINED){
@@ -204,6 +204,38 @@ export class LinkedList {
     if(Array.isArray(otherItem)){
       otherItem = new LinkedList(otherItem);
     }
+    if(!(otherItem instanceof LinkedList)){
+      throw new Error("When concacting, need an array or a linked list");
+    }
+
+    if(otherItem.length === 0){
+      return this;
+    }
+    const prevLast = this.endNode;
+    prevLast.next = otherItem.startNode;
+    otherItem.startNode.prev = prevLast;
+    this.endNode = otherItem.endNode;
+    this._length += otherItem.length;
+    return this;
+  }
+  insertAtIndex(item, index){
+    if(index >= this._length){
+      return this.push(item);
+    }
+    if(index <= 0){
+      return this.unshift(item);
+    }
+    var current = this.startNode;
+    for(var i = 0; i < index; i++){
+      current = current.next;
+    }
+    var node = {
+      prev: current.prev,
+      next: current,
+      item: item
+    };
+    current.prev = node;
+    return this;
   }
 }
 

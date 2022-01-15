@@ -1,12 +1,14 @@
 import { insertItemAny } from "../insert.js";
 
 import {
-  getFirst,
+  getFirst, getLast,
   LinkedList,
 } from "../../utility.js";
 
 import {
-  mergeSingles, mergeSortedArraysNoSearch
+  buildEmptyArray,
+  mergeSinglesArray,
+  mergeSortedArraysNoSearch,
 } from "./reused.js";
 
 export function mergeSortLoop(unsortedArray, compare){
@@ -25,7 +27,7 @@ export function mergeSortLoop(unsortedArray, compare){
     return [getFirst(unsortedArray)];
   }
   if(unsortedArray.length === 2){
-    return mergeSingles(
+    return mergeSinglesArray(
       unsortedArray[0],
       unsortedArray[1],
       compare
@@ -37,7 +39,7 @@ export function mergeSortLoop(unsortedArray, compare){
   if(length % 2 > 0) {
     list.push(
       insertItemAny(
-        mergeSingles(
+        mergeSinglesArray(
           unsortedArray[0],
           unsortedArray[1],
           compare
@@ -54,7 +56,7 @@ export function mergeSortLoop(unsortedArray, compare){
 
   while(length > counter){
     list.push(
-      mergeSingles(
+      mergeSinglesArray(
         unsortedArray[counter],
         unsortedArray[counter + 1],
         compare
@@ -69,7 +71,9 @@ export function mergeSortLoop(unsortedArray, compare){
 
     const merged = mergeSortedArraysNoSearch(
       aI, bI,
-      compare
+      compare,
+      getFirst, getLast,
+      buildEmptyArray, mergeSinglesArray, insertItemAny
     );
 
     list.unshift(merged);

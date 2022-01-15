@@ -1,8 +1,14 @@
+import { insertItemAny } from "../insert.js";
+
 import {
-  getFirst,
+  getFirst, getLast,
 } from "../../utility.js";
 
-import { mergeSortedArraysNoSearch } from "./reused.js";
+import {
+  buildEmptyArray,
+  mergeSinglesArray,
+  mergeSortedArraysNoSearch,
+} from "./reused.js";
 
 export function mergeSortRecursive(initialArray, compare){
   if(!Array.isArray(initialArray)){
@@ -29,28 +35,34 @@ export function mergeSortRecursive(initialArray, compare){
     const bA = array.slice(middle);
 
     if(aA.length === 1 && bA.length === 1){
-      const result = mergeSortedArraysNoSearch(aA,  bA, compare);
+      const result = mergeSinglesArray(aA[0],  bA[0], compare);
       return result;
     }
     if(aA.length > 1 && bA.length > 1){
       const result = mergeSortedArraysNoSearch(
         divideRecursion(aA),
         divideRecursion(bA),
-        compare
+        compare,
+        getFirst, getLast,
+        buildEmptyArray, mergeSinglesArray, insertItemAny
       );
       return result;
     }
     if(aA.length <= 1){
       const result = mergeSortedArraysNoSearch(
         aA, divideRecursion(bA),
-        compare
+        compare,
+        getFirst, getLast,
+        buildEmptyArray, mergeSinglesArray, insertItemAny
       );
       return result;
     }
     if(bA.length <= 1){
       const result = mergeSortedArraysNoSearch(
         divideRecursion(aA), bA,
-        compare
+        compare,
+        getFirst, getLast,
+        buildEmptyArray, mergeSinglesArray, insertItemAny
       );
       return result;
     }

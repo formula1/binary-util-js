@@ -1,15 +1,11 @@
 import { compareError } from "../../errors.js";
 import { findLast } from "../../search/findLast.js";
 
-import { insertItemAny } from "../insert.js";
-
 import {
-  prepareIndexForUse,
-  getFirst,
-  getLast,
+  prepareIndexForUse, LinkedList
 } from "../../utility.js";
 
-export function mergeSortedArraysSeach(aA,  bA, compare){
+export function mergeSortedArraysSeach(aA,  bA, compare, getFirst, getLast, mergeSingles){
   if(aA.length === 0){
     return bA;
   }
@@ -77,7 +73,11 @@ export function mergeSortedArraysSeach(aA,  bA, compare){
   return finalArray;
 }
 
-export function mergeSortedArraysNoSearch(aA,  bA, compare){
+export function mergeSortedArraysNoSearch(
+  aA,  bA, compare,
+  getFirst, getLast,
+  buildFinalArray, mergeSingles, insertItemIntoArray
+){
   if(aA.length === 0){
     return bA;
   }
@@ -97,10 +97,8 @@ export function mergeSortedArraysNoSearch(aA,  bA, compare){
   }
 
   // var totalShiftTime = 0;
-
-  var finalArray = [];
-
   // var shiftStart = Date.now();
+  var finalArray = buildFinalArray();
 
   var aCurrent = aA.shift();
   var bCurrent = bA.shift();
@@ -149,30 +147,35 @@ export function mergeSortedArraysNoSearch(aA,  bA, compare){
   }while(aA.length > 0 && bA.length > 0);
 
   if(aA.length === 0 && bA.length === 0){
-    return finalArray.concat(mergeSingles(aCurrent, bCurrent, compare));
+    const result = finalArray.concat(mergeSingles(aCurrent, bCurrent, compare));
+    return result;
   }
 
   if(aA.length === 0){
-    return finalArray.concat(
-      insertItemAny(
-        ([bCurrent]).concat(bA),
+    (bA).unshift(bCurrent);
+    const result = finalArray.concat(
+      insertItemIntoArray(
+        bA,
         aCurrent,
         compare
       )
     );
+    return result;
   }
   if(bA.length === 0){
-    return finalArray.concat(
-      insertItemAny(
-        ([aCurrent]).concat(aA),
+    aA.unshift(aCurrent);
+    const result = finalArray.concat(
+      insertItemIntoArray(
+        aA,
         bCurrent,
         compare
       )
     );
+    return result;
   }
 }
 
-export function mergeSingles(aI, bI, compare){
+export function mergeSinglesArray(aI, bI, compare){
   const result = compare(aI, bI);
   if(result < 0){
     return [aI, bI];
@@ -185,4 +188,23 @@ export function mergeSingles(aI, bI, compare){
     return [bI, aI];
   }
   throw new Error(compareError);
+}
+
+export function mergeSinglesLL(aI, bI, compare){
+  const result = compare(aI, bI);
+  if(result < 0){
+    return new LinkedList([aI, bI]);
+  }
+  if(result === 0){
+    // Should I do a random number?
+    return new LinkedList([aI, bI]);
+  }
+  if(result > 0){
+    return new LinkedList([bI, aI]);
+  }
+  throw new Error(compareError);
+}
+
+export function buildEmptyArray(){
+  return [];
 }
