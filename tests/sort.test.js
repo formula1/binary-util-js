@@ -16,13 +16,17 @@ import {
 
 import { mergeSortRecursive } from "../src/modifiers/mergeSort/mergeSortRecursive.js";
 import { mergeSortLoop } from "../src/modifiers/mergeSort/mergeSortLoop.js";
+import { mergeSortLoopLL } from "../src/modifiers/mergeSort/mergeSortLoopLL.js";
 
 tap.test("sorting", async (sortTest)=>{
   sortTest.test("mergeSort recursion:", async (reTest)=>{
     runSortTest(reTest, mergeSortRecursive);
   });
-  sortTest.test("mergeSort no recursion:", async (noTest)=>{
+  sortTest.test("mergeSort loop:", async (noTest)=>{
     runSortTest(noTest, mergeSortLoop);
+  });
+  sortTest.test("mergeSort loop linked list:", async (noTest)=>{
+    runSortTest(noTest, mergeSortLoopLL);
   });
 });
 
@@ -229,8 +233,17 @@ function runProbablyTest(test, probablyArray, sortFn, compare){
     probablyArray === sortedArray,
     "The sorted array is not equal to the unsorted array"
   );
+  const boo = haveSameItems(sortedArray, probablyArray, compare);
+  if(!boo){
+    console.error(
+      "not the same items:",
+      probablyArray.length, sortedArray.length,
+      probablyArray,
+      sortedArray
+    );
+  }
   test.ok(
-    haveSameItems(sortedArray, probablyArray, compare),
+    boo,
     "The sorted Array and unsorted array have the same items"
   );
   test.ok(
