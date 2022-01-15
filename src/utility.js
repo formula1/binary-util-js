@@ -262,6 +262,7 @@ export function linkedListFactory(){
         end = node;
       }
       length++;
+      return this;
     },
     pop(){
       const node = end;
@@ -294,6 +295,7 @@ export function linkedListFactory(){
         start = node;
       }
       length++;
+      return this;
     },
     shift(){
       var node = start;
