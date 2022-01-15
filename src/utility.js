@@ -84,10 +84,9 @@ export class LinkedList {
     return this.endNode.item;
   }
   constructor(maybeArray){
+    this._length = 0;
     if(maybeArray){
       this.fromArray(maybeArray);
-    } else {
-      this._length = 0;
     }
   }
   push(newItem){
