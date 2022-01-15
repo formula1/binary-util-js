@@ -158,7 +158,7 @@ export class LinkedList {
     if(this._length > 0){
       throw new Error("Cannot update a non empty Linked List");
     }
-    var len = array.length;
+    const len = array.length;
     if(len === 0) return;
     this.startNode = {
       item: array[0],
