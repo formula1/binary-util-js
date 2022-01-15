@@ -160,15 +160,18 @@ export class LinkedList {
     }
     var len = array.length;
     if(len === 0) return;
-    this.start = {
-      item: array[0]
+    this.startNode = {
+      item: array[0],
+      prev: UNDEFINED,
+      next: UNDEFINED,
     };
     var prevNode = this.startNode;
     var nextNode;
     for(var i = 1; i < len; i++){
       nextNode = {
+        item: array[i],
         prev: prevNode,
-        item: array[i]
+        next: UNDEFINED,
       };
       prevNode.next = nextNode;
       prevNode = nextNode;
