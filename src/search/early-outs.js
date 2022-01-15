@@ -17,9 +17,23 @@ export function tryEarlyOuts(array, item, compare, minIndex, maxIndex){
   if(array.length === 1) return easySingle(array, item, compare);
   if(minIndex === maxIndex && minIndex !== UNDEFINED) {
     var c = compare(item, array[minIndex]);
-    if(c > 1) return -1 * (minIndex + 1);
+    if(c > 1){
+      if(
+        minIndex === array.length - 1
+        ||
+        minIndex === UNDEFINED
+      ) return Number.POSITIVE_INFINITY;
+      else return -1 * (minIndex + 1);
+    }
     if(c === 0) return minIndex;
-    if(c < 1) return -1 * minIndex;
+    if(c < 1){
+      if(
+        minIndex === 0
+        ||
+        minIndex === UNDEFINED
+      ) return Number.NEGATIVE_INFINITY;
+      else return -1 * minIndex;
+    }
     throw new Error(compareError);
   }
   return false;
